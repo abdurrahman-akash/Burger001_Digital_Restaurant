@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% load static %}
+{% block class %}class="sub_page" {% endblock %}
+{% block home_status %}active{% endblock %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Login
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            {% if form.errors %}
+            <p class="error-message">Invalid username or password. Please try again.</p>
+            {% endif %}
+            <form method="post">
+              {% csrf_token %}
+              <div>
+                <input type="text" class="form-control" name="username" placeholder="User Name" required />
+              </div>
+              <div>
+                <input type="password" class="form-control" name="password" placeholder="Phone Number" required />
+              </div>
+              <div class="btn_box">
+                <button type="submit">
+                  Login
+                </button>
+              </div>
+            </form>
+            <p>Don't have an account? <a href="{% url "SignUp" %}">Sign up here</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
